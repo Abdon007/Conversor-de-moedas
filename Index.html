@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Conversor de Moedas</title>
+</head>
+<style>
+    img{
+        width: 100px;
+        margin: 50px;
+    }
+
+    /* Animar o input */
+@keyframes piscar {
+    0% {
+        /* box-shadow: 0 0 25px #ffc107; */
+        filter: drop-shadow(0 0 25px #ffc107);
+        -webkit-filter: drop-shadow(0 0 25px #ffc107);
+        -moz-filter: drop-shadow(0 0 25px #ffc107);
+        -o-filter: drop-shadow(0 0 25px #ffc107);
+        -ms-filter: drop-shadow(0 0 25px #ffc107);
+    }
+    100% {
+    }
+}
+
+@keyframes aparecer {
+    to {
+        opacity: 0; /* opacidade 0 = 100% transparente */
+    }
+    from {
+        opacity: 1; /* opacidade 1 = 0% transparente */
+    }
+}
+
+.animar {
+    animation: piscar 1s infinite alternate;
+}
+
+.aparecer {
+    animation: aparecer 1.5s ease-in;
+}
+
+</style>
+
+<body class="bg-black">
+
+    <div class="container text-center p-5 w-25 rounded mt-5">
+        <h1 class="text-center text-danger">Conversor de Moedas</h1>
+        <div class="container p-1">
+            <p class="text-danger d-inline">R$</p>
+            <input type="number" name="valoEmReal" id="valorEmReal" class="input d-inline" step="0.01" min="0.00" max="9999999999.99" value="" tabindex="1" onclick="ativarBotao()" onchange="ativarBotao()" autofocus required/>
+        </div>
+        <div class="form-group p-1">
+            <input type="radio" id="dolar" name="moedaEstrangeira" value="Dólar" tabindex="2"/><label for="dolar" class="text-danger m-1"> Dólar</label>
+            <input type="radio" id="euro" name="moedaEstrangeira" value="Euro" tabindex="3"/><label for="euro" class="text-danger m-1"> Euro</label>
+            <input type="radio" id="libra" name="moedaEstrangeira" value="Libra" tabindex="4"/><label for="libra" class="text-danger m-1"> Libra</label>
+            <input type="radio" id="bitcoin" name="moedaEstrangeira" value="Bitcoin" tabindex="5"/><label for="bitcoin" class="text-danger m-1"> Bitcoins</label>
+        </div>
+        <div class="button-group p-1 m-1">
+            <button  id="btnConverter" class="btn btn-warning dasativado botao" onclick="ativarBotao(); bloquearBotao()" disabled>Converter</button>
+            <button  type="reset" id="btnLimpar" class="btn btn-danger botao" tabindex="7">Limpar</button>
+        </div>
+        <div class="instrucoes p-1 rounded">
+            <p class="centro text-danger" id="aviso">Digite o valor, escolha a moeda e converter</p>
+        </div>
+        <div class="intrucoes">
+            <figure id="imgMoedas" class="centro">
+                <img class="animar" src="imgs/moedas/real.png" alt="Real">
+                <img class="animar" src="imgs/moedas/dolar.png" alt="Moeda">
+            </figure>
+        </div>
+    </div>
+</body>
+
+</html>
